@@ -29,6 +29,6 @@ async def get_currency_rate(currency_code: Union[str, None] = Query(default='NGN
         formatted_data = await services.format_response_data(resp_data)
         buy_rate = formatted_data[0]['adv']['price']
         sell_rate = formatted_data[1]['adv']['price']
-        return {'success': True, 'message':f'Exchange rate for {currency_code} retrieved successfully.', 'currency': currency_code, 'buy': buy_rate, 'sell': sell_rate }
+        return {'success': True, 'message':f'Exchange rate for {currency_code} retrieved successfully.', 'base_currency': 'USD', 'currency': currency_code, 'buy': buy_rate, 'sell': sell_rate }
     except:
         return {'success': False, 'message': 'Unable to get rate'}
