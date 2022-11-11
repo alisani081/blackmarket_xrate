@@ -1,7 +1,7 @@
 from typing import Any, Union
 from fastapi import FastAPI, Query
 import services
-# from schemas import GetAllCurrenciesResponseSchema
+from schemas import GetAllCurrenciesResponseSchema
 
 app = FastAPI()
 
@@ -10,7 +10,7 @@ async def root():
     return {"message": "Welcome to Team Bevel Black Market Exchange Rate Service"}
 
 
-@app.get("/curriences")
+@app.get("/curriences", response_model=GetAllCurrenciesResponseSchema)
 def get_all_currencies() -> Any:
     """
     This endpoint returns all available and supported currencies.
